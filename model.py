@@ -1,6 +1,11 @@
 import torch
 import torch.nn as nn
 
+# architecture inspired by
+# AN ENSEMBLE OF SIMPLE CONVOLUTIONAL NEURAL
+# NETWORK MODELS FOR MNIST DIGIT RECOGNITION
+# by An et al., 2020
+# https://arxiv.org/pdf/2008.10400 (viewed last on 09.06.2025)
 
 architecture = [  # 1x28x28
     (32, 3, 1, 0),  # 32x26x26

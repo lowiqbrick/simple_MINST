@@ -35,6 +35,7 @@ def train(data_loader, network, optimizer, loss, scaler):
 
 def main():
     network = MNIST_network().to(configurations.DEVICE)
+    print(f"training on {configurations.DEVICE}")
     optimizer = optim.Adam(network.parameters(),
                            configurations.LEARNING_RATE,
                            weight_decay=configurations.WEIGHT_DECAY)
