@@ -12,7 +12,7 @@ architecture = [  # 1x28x28
     (64, 3, 1, 0),  # 64x24x24
     (128, 3, 1, 0),  # 128x22x22
     (256, 3, 1, 0),  # 256x20x20 (256*20^2 = 102400)
-    [102400, 10]
+    [102400, 10],
 ]
 
 
@@ -49,9 +49,9 @@ class MNIST_network(nn.Module):
         final_layers = nn.ModuleList()
         for layer in architecture:
             if isinstance(layer, tuple):
-                final_layers.append(CNN_layer(dim_in, layer[0],
-                                              layer[1], layer[2],
-                                              layer[3]))
+                final_layers.append(
+                    CNN_layer(dim_in, layer[0], layer[1], layer[2], layer[3])
+                )
                 dim_in = layer[0]
             elif isinstance(layer, list):
                 if is_cnn_so_far:
@@ -61,7 +61,6 @@ class MNIST_network(nn.Module):
         return final_layers
 
     def forward(self, x):
-        is_cnn = True
         for layer in self.network:
             if isinstance(layer, FC_layer):
                 x = torch.flatten(x, 1)
