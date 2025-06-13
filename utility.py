@@ -5,6 +5,9 @@ from tqdm import tqdm
 import configurations
 import numpy as np
 
+import model
+import utility
+
 
 def get_loaders(file_path: str):
     train_dataset = datasets.MNIST(
@@ -56,13 +59,16 @@ def load_model(filename, network, optim, learningrate):
         group["lr"] = learningrate
 
 
-def calculate_accuracy(network, loader, object_tresh=0.5):
+def calculate_accuracy(
+    network: model.MNIST_network, loader: utility.DataLoader, object_tresh=0.5
+):
     network.eval()
     num_correct = 0
     num_total = len(loader.dataset)
     # print(num_total)
     for images, targets in tqdm(loader):
-        images.to(configurations.DEVICE)
+        images = images.to(configurations.DEVICE)
+        targets = targets.to(configurations.DEVICE)
         with torch.no_grad():
             results = network(images)
 
