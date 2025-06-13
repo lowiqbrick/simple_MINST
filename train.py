@@ -44,7 +44,7 @@ def main():
     )
     loss = MNIST_loss()
     train_loader, test_loader = utility.get_loaders(configurations.PATH_TO_FOLDER)
-    MNIST_scaler = torch.cuda.amp.GradScaler()
+    MNIST_scaler = torch.amp.GradScaler("cuda")
 
     if configurations.LOAD:
         utility.load_model(
