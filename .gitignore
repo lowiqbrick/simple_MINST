@@ -1,4 +1,13 @@
 __pycache__
+
+# train-/test-data
 MNIST/
+
+# pdf the network is based on
 2008.10400v2.pdf
+
+# no checkpoint files to avoid bloating the repository size
 **checkpoint**
+
+# name of the environment
+mnist_env/
